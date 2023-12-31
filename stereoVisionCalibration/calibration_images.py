@@ -10,7 +10,7 @@ while cap.isOpened():
     succes1, img = cap.read()
     succes2, img2 = cap2.read()
 
-    k = cv2.waitKey(5)
+    k = cv2.waitKey(4)
 
     if k == 27:
         break
