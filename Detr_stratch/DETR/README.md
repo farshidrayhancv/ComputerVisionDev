@@ -1,6 +1,6 @@
 # DETR(Detection Transformer)
 
- [DETR]is an end-to-end target detection network introduced by Facebook and published in ECCV2020. In contrast to traditional target detection models like Faster RCNN and YOLO, DETR eliminates the need for manual design processes such as anchor point generation and maximum suppression. The model utilizes the Transformer architecture and a specially designed bipartite matching loss function to directly infer the entire image, simultaneously providing target locations and categories.
+ [DETR](https://link.zhihu.com/?target=https%3A//www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460205.pdf) is an end-to-end target detection network introduced by Facebook and published in ECCV2020. In contrast to traditional target detection models like Faster RCNN and YOLO, DETR eliminates the need for manual design processes such as anchor point generation and maximum suppression. The model utilizes the Transformer architecture and a specially designed bipartite matching loss function to directly infer the entire image, simultaneously providing target locations and categories.
 
 The DETR model comprises three main components: a backbone network (ResNet), a transformer structure, and an FFN forward feedback network. ResNet addresses issues related to information loss in traditional convolution or fully connected networks, enhancing the success of deep network training.
 
@@ -9,7 +9,6 @@ The Transformer, widely adopted since its introduction in 2017, has become a uni
 The FFN forward feedback network, consisting mainly of linear layers, outputs target locations and categories. To ensure model output aligns with ground truth for loss calculation, DETR employs the classical Hungarian algorithm for bipartite matching. This algorithm determines the matching scheme that minimizes total cost.
 
 The overall model process involves inputting an image into ResNet to obtain a feature map. The feature map, after conversion to one dimension and addition of positional encoding, is fed into the Transformer. Following the encoder and decoder stages, the FFN forward feedback network produces the probability distribution for column positions and categories, completing the target detection process.
-
 
 ## Modules Overview
 ### 1. Backbone Network
