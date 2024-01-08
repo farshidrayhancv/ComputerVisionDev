@@ -1,18 +1,15 @@
 # DETR(Detection Transformer)
 
- [DETR](https://link.zhihu.com/?target=https%3A//www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460205.pdf) is an end-to-end target detection network based on Transformer proposed by Facebook and published in ECCV2020. Different from the popular faster RCNN and YOLO series of target detection models, DETR is an end-to-end target detection model, which does not need traditional manual design, such as anchor point generation, maximum suppression and other operations. DETR uses the transformer architecture and the newly designed loss function bipartite matching loss to directly reason the whole picture and output the target and category at the same time.
+ [DETR]is an end-to-end target detection network introduced by Facebook and published in ECCV2020. In contrast to traditional target detection models like Faster RCNN and YOLO, DETR eliminates the need for manual design processes such as anchor point generation and maximum suppression. The model utilizes the Transformer architecture and a specially designed bipartite matching loss function to directly infer the entire image, simultaneously providing target locations and categories.
 
- DETR model is mainly composed of three parts: backbone network, transformer structure and FFN forward feedback network.
+The DETR model comprises three main components: a backbone network (ResNet), a transformer structure, and an FFN forward feedback network. ResNet addresses issues related to information loss in traditional convolution or fully connected networks, enhancing the success of deep network training.
 
-DETR adopts ResNet as the backbone network of feature extraction. The traditional convolution network or fully connected network has more or less the problem of information loss, which will also cause the gradient to disappear or explode, leading to the failure of deep network training. ResNet has solved this problem to some extent.
+The Transformer, widely adopted since its introduction in 2017, has become a unified paradigm in NLP and visual fields, including image classification and target detection. DETR pioneers the use of Transformer in target detection, leveraging its attention mechanism to capture global information in the image and simplifying the target detection pipeline.
 
-Transformer has been widely used since it was put forward in 2017. It has basically become a unified paradigm not only in the NLP field, but also in some visual fields, such as image classification, target detection, behavior recognition, etc., replacing CNN in some functions. As the pioneering work of Transformer used in the field of target detection, DETR uses the attention mechanism in transformer to obtain the global information of the image, which simplifies pipline of target detection.
+The FFN forward feedback network, consisting mainly of linear layers, outputs target locations and categories. To ensure model output aligns with ground truth for loss calculation, DETR employs the classical Hungarian algorithm for bipartite matching. This algorithm determines the matching scheme that minimizes total cost.
 
-FFN feedforward network is mainly composed of linear layers. Output a series of target locations and categories.
+The overall model process involves inputting an image into ResNet to obtain a feature map. The feature map, after conversion to one dimension and addition of positional encoding, is fed into the Transformer. Following the encoder and decoder stages, the FFN forward feedback network produces the probability distribution for column positions and categories, completing the target detection process.
 
-In order to make a series of goals output by the model correspond to the goals of ground truth to achieve the purpose of calculating loss, this paper adopts the classical bipartite matching algorithm-Hungarian algorithm. Hungarian algorithm can find the bipartite matching scheme that minimizes the total cost.
-
-The overall process of the model: the image is input to ResNet to obtain the feature map, the feature map is converted to one dimension and the positional encoding is added, and then entered into the Transformer, and after encoder and decoder, the forward feedback network of the FFN is entered to obtain the probability distribution of some column positions and categories.
 
 ## Modules Overview
 ### 1. Backbone Network
