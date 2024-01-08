@@ -11,16 +11,16 @@ The FFN forward feedback network, consisting mainly of linear layers, outputs ta
 The overall model process involves inputting an image into ResNet to obtain a feature map. The feature map, after conversion to one dimension and addition of positional encoding, is fed into the Transformer. Following the encoder and decoder stages, the FFN forward feedback network produces the probability distribution for column positions and categories, completing the target detection process.
 
 ## Modules Overview
-### 1. Backbone Network
+#### 1. Backbone Network
 The DETR model consists of three key components, starting with the backbone network responsible for feature extraction. Here, ResNet is employed, addressing issues related to information loss in traditional convolution or fully connected networks. The use of ResNet mitigates problems such as gradient disappearance or explosion, contributing to the success of deep network training.
 
-### 2. Transformer Structure
+#### 2. Transformer Structure
 Building upon the widely adopted Transformer architecture introduced in 2017, DETR brings the attention mechanism into play for target detection. This architecture has become a standard paradigm in various fields, including Natural Language Processing (NLP) and visual tasks such as image classification and behavior recognition. DETR employs the attention mechanism to capture global information in the image, streamlining the target detection pipeline.
 
-### 3. FFN Forward Feedback Network
+#### 3. FFN Forward Feedback Network
 The FFN feedforward network, primarily composed of linear layers, is responsible for generating output related to target locations and categories. This step completes the forward pass, providing the necessary predictions for the detected targets.
 
-### Loss Calculation and Bipartite Matching
+#### 4 Loss Calculation and Bipartite Matching
 To ensure that the model's output aligns with the ground truth for loss calculation, DETR utilizes the classical bipartite matching algorithm, specifically the Hungarian algorithm. This algorithm efficiently determines the bipartite matching scheme that minimizes the total cost, establishing correspondences between predicted targets and ground truth targets.
 
 
