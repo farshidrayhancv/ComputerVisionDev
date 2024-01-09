@@ -13,7 +13,7 @@ import mindspore.nn as nn
 from mindspore import ops
 
 from .position_encoding import PositionEmbeddingSine
-from .resnet import resnet50, resnet101, resnet_cusmtom
+from .resnet import resnet50, resnet101, resnet_custom
 
 
 class Joiner(nn.Cell):
@@ -85,10 +85,10 @@ def build_backbone(resnet='resnet50', return_interm_layers=False, is_dilation=Fa
         resnet = resnet50(return_interm_layers=return_interm_layers, is_dilation=is_dilation)
     elif resnet == 'resnet101':
         resnet = resnet101(return_interm_layers=return_interm_layers, is_dilation=is_dilation)
-    elif resnet == 'resnet_cusmtom':
-        resnet = resnet_cusmtom(return_interm_layers=return_interm_layers, is_dilation=is_dilation)
+    elif resnet == 'resnet_custom':
+        resnet = resnet_custom(return_interm_layers=return_interm_layers, is_dilation=is_dilation)
     else:
-        raise RuntimeError(f"resnet should be resnet50/resnet101/resnet_cusmtom, not {resnet}.")
+        raise RuntimeError(f"resnet should be resnet50/resnet101/resnet_custom, not {resnet}.")
     posemb = PositionEmbeddingSine()
     backbone = Joiner(resnet, posemb)
     return backbone

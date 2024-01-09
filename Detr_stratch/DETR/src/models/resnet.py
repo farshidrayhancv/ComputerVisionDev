@@ -256,7 +256,7 @@ def resnet101(return_interm_layers=False, is_dilation=False):
                   return_interm_layers=return_interm_layers,
                   is_dilation=is_dilation)
 
-def resnet_cusmtom(return_interm_layers=False, is_dilation=False):
+def resnet_custom(return_interm_layers=False, is_dilation=False):
     """
     Get ResNet01 neural network.
 

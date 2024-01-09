@@ -150,7 +150,7 @@ class COCODataset:
         return len(self.imgs_ids)
 
 
-def build(img_set='val', batch=2, shuffle=False, coco_dir='./coco'):
+def build(img_set='val', batch=2, shuffle=False, coco_dir='/home/farshid/dataset/coco'):
     """
     Build COCO dataset
 

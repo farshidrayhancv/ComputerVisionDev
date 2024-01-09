@@ -156,7 +156,7 @@ def make_transforms(image_set, dataset):
         dataset: Dataset after augmentation and normalization
     """
     scales = [480, 512, 544, 576, 608, 640]
-    scales = [256, 480, 512, 544]
+    scales = [128,]
     in_list = ["img", 'bbox', 'size', 'area', 'masks']
 
     if image_set == 'train':
